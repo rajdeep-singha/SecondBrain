@@ -1,4 +1,4 @@
-# 🧠 SecondBrain
+#  SecondBrain
 
 A personal, domain-organized knowledge repo that **learns from my sessions and
 tweets** and lets me recall it later by *meaning* — not just keyword search.
@@ -82,5 +82,5 @@ run `make index`.
   torch, no API keys) stored in `sqlite-vec` (a single-file embedded vector DB).
   Anthropic has no embeddings API, so local is both simplest and cheapest here.
 - **`build_index.py` is stdlib-only** (`json`/`os`/`re`) — modeled on
-  [Sarthib7/agentsmith `build-index.py`](https://github.com/Sarthib7/agentsmith/blob/main/scripts/build-index.py).
+
 - **Incremental**: re-embedding only touches changed notes (tracked by content hash).
