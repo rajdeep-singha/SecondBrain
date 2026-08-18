@@ -96,6 +96,46 @@ make import         # copy new in-scope sessions into sessions/inbox/
 So working in another folder captures nothing on its own; you decide when to
 `make import` and what's worth distilling.
 
+## Systematic search
+
+A repeatable procedure to search the brain thoroughly — freshen the index first,
+then query, widen, and filter.
+
+```bash
+# 1. Make sure the index reflects the latest notes (safe to run anytime;
+#    only re-embeds notes that changed).
+make index
+
+# 2. Basic semantic search (default: top 5 across all domains).
+make search q="how did I do an aptos coin transfer?"
+
+# 3. Widen the net — pull more candidates when you're exploring.
+make search q="yield bearing token design" k=10
+
+# 4. Narrow to one domain (d=<domain folder name>).
+make search q="permission denied on insert" d=databases
+make search q="storage TTL"                d=stellar-soroban k=3
+
+# 5. Sweep several angles on the same topic (rephrase — semantic search
+#    rewards different wording).
+make search q="how do I persist per-user balance in a contract?"
+make search q="contract storage archived after some time"
+make search q="rebase vs exchange rate accounting"
+
+# 6. Browse instead of search — the generated catalog, grouped by domain.
+open INDEX.md          # or: less INDEX.md
+
+# 7. Exact keyword fallback (when you know the literal term/code symbol).
+grep -ri "coin::transfer" domains/ tweets/
+```
+
+Notes on the flow:
+- `q=` is the query, `d=` restricts to a domain, `k=` sets how many results.
+- Direct (without `make`): `.venv/bin/python scripts/search.py "query" --domain databases -k 5`.
+- If search says *"no index found"*, run `make index` first.
+- Scores are relative similarity, not truth — skim the top few, then open the
+  linked note for the full context.
+
 ## Design notes
 
 - **Local & key-free**: embeddings via `fastembed` (small ONNX model, CPU, no
