@@ -1,0 +1,19 @@
+# Generated vector DB / state (INDEX.md is committed for browsing, like the reference)
+.brain/
+
+# fastembed / model cache
+.fastembed_cache/
+*.onnx
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Node (for TS skills)
+node_modules/
+dist/
+
+# OS
+.DS_Store

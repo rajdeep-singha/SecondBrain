@@ -1,0 +1,4 @@
+# SecondBrain semantic index pipeline (local, no API keys)
+# build_index.py uses stdlib only — these are only needed for embed.py / search.py.
+fastembed>=0.3.6      # ONNX CPU embeddings, no torch, no keys
+sqlite-vec>=0.1.1     # single-file embedded vector DB (loadable sqlite extension)
