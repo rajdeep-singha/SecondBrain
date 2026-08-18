@@ -1,11 +1,13 @@
 # Prefer the project virtualenv if it exists, else fall back to python3.
 PY ?= $(shell [ -x .venv/bin/python ] && echo .venv/bin/python || echo python3)
 
-.PHONY: help install catalog embed index search distill
+.PHONY: help install import import-dry catalog embed index search distill
 
 help:
 	@echo "SecondBrain — make targets"
 	@echo "  make install        Install python deps (fastembed, sqlite-vec)"
+	@echo "  make import         Harvest NEW allow-listed sessions into sessions/inbox/"
+	@echo "  make import-dry     List what import would pull (no files written)"
 	@echo "  make catalog        Build INDEX.md + .brain/manifest.json (stdlib only)"
 	@echo "  make embed          (Re)build the semantic vector DB (.brain/index.db)"
 	@echo "  make index          catalog + embed (the usual after adding notes)"
@@ -16,6 +18,12 @@ install:
 	python3 -m venv .venv
 	.venv/bin/python -m pip install --upgrade pip
 	.venv/bin/python -m pip install -r requirements.txt
+
+import:
+	$(PY) scripts/import_sessions.py
+
+import-dry:
+	$(PY) scripts/import_sessions.py --dry-run
 
 catalog:
 	$(PY) scripts/build_index.py

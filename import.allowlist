@@ -1,0 +1,14 @@
+# Folders whose Claude Code sessions may be harvested into SecondBrain.
+# One glob per line, matched (case-insensitive) against the folder's BASENAME
+# (the last path segment of its working directory). Lines starting with # are
+# comments. Used by scripts/import_sessions.py.
+#
+# Edit freely — add the crypto / AI repos you want the brain to learn from.
+
+aptos*
+PYROS*
+pyros*
+Aethera*
+xlmLR
+anakin
+metadata

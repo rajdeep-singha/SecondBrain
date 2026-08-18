@@ -76,6 +76,26 @@ To add knowledge: drop a raw file in `sessions/inbox/` (or `tweets/inbox/`), the
 in Claude Code invoke the **`distill-session`** skill to file it as a note, and
 run `make index`.
 
+## Capturing sessions from other folders
+
+Nothing is auto-tracked. But Claude Code already logs *every* session, in *every*
+folder, to `~/.claude/projects/<encoded-path>/<session-id>.jsonl`. The importer
+harvests **new** sessions from folders you allow-list:
+
+```bash
+make import-dry     # preview which sessions would be pulled
+make import         # copy new in-scope sessions into sessions/inbox/
+```
+
+- Scope is controlled by **`import.allowlist`** (globs matched against each
+  folder's basename — e.g. `aptos*`, `PYROS*`, `Aethera*`). Edit it to add repos.
+- The importer is idempotent: already-seen sessions (tracked in
+  `.brain/imported.json`) are skipped, so re-running only pulls what's new.
+- Imported files are *raw* — run `distill-session` on them, then `make index`.
+
+So working in another folder captures nothing on its own; you decide when to
+`make import` and what's worth distilling.
+
 ## Design notes
 
 - **Local & key-free**: embeddings via `fastembed` (small ONNX model, CPU, no
