@@ -17,3 +17,5 @@ dist/
 
 # OS
 .DS_Store
+
+sessions/inbox

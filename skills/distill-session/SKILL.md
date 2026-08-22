@@ -1,6 +1,6 @@
 ---
 name: distill-session
-description: Turn a raw session or tweet export in an inbox/ folder into a clean, tagged SecondBrain note filed under the right domain, then re-index. Use when the user says "distill", "process the inbox", "learn from this session", or drops a file in sessions/inbox or tweets/inbox.
+description: Distill a raw session, chat, or tweet export into an atomic, tagged SecondBrain note filed under the right domain (aptos, ethereum, stellar-soroban, ai-agents, databases, general), then re-index for search. Use when the user says "distill", "distill this/the session", "process the inbox", "learn from this session", "learn this", "turn this into a note", "make a note from this", "save/capture this lesson", or "add this to my second brain" — or pastes a session/tweet to learn from, or points at a file in sessions/inbox or tweets/inbox.
 ---
 
 # distill-session
