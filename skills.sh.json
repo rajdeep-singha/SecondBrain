@@ -1,0 +1,16 @@
+{
+  "$schema": "https://skills.sh/schemas/skills.sh.schema.json",
+  "notGrouped": "bottom",
+  "groupings": [
+    {
+      "title": "Clipping",
+      "description": "Cut post-ready short-form clips from show/podcast transcripts",
+      "skills": ["make-clips"]
+    },
+    {
+      "title": "Knowledge",
+      "description": "Distill raw sessions and tweets into searchable, tagged notes",
+      "skills": ["distill-session"]
+    }
+  ]
+}
