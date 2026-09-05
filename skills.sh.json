@@ -8,6 +8,11 @@
       "skills": ["make-clips"]
     },
     {
+      "title": "Crypto engineering",
+      "description": "Domain playbooks that apply accumulated on-chain lessons",
+      "skills": ["aptos-move", "soroban"]
+    },
+    {
       "title": "Knowledge",
       "description": "Distill raw sessions and tweets into searchable, tagged notes",
       "skills": ["distill-session"]
