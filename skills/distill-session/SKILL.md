@@ -1,6 +1,6 @@
 ---
 name: distill-session
-description: Distill a raw session, chat, or tweet export into an atomic, tagged SecondBrain note filed under the right domain (aptos, ethereum, stellar-soroban, ai-agents, databases, general), then re-index for search. Use when the user says "distill", "distill this/the session", "process the inbox", "learn from this session", "learn this", "turn this into a note", "make a note from this", "save/capture this lesson", or "add this to my second brain" — or pastes a session/tweet to learn from, or points at a file in sessions/inbox or tweets/inbox.
+description: Distill a raw session, chat, or tweet export into an atomic, tagged SecondBrain note filed under the right domain (aptos, ethereum, stellar-soroban, ai-agents, databases, clippers, general), then re-index for search. Use when the user says "distill", "distill this/the session", "process the inbox", "learn from this session", "learn this", "turn this into a note", "make a note from this", "save/capture this lesson", or "add this to my second brain" — or pastes a session/tweet to learn from, or points at a file in sessions/inbox or tweets/inbox.
 ---
 
 # distill-session
@@ -19,8 +19,12 @@ pastes directly in chat.
 ## Domains
 Notes go under `domains/<domain>/notes/` (or `tweets/` for tweet notes). Valid
 domains are the subfolders of `domains/`: `aptos`, `ethereum`, `stellar-soroban`,
-`ai-agents`, `databases`, `general`. If none fit, ask the user before creating a
-new `domains/<name>/notes/` folder.
+`ai-agents`, `databases`, `clippers`, `general`. If none fit, ask the user before
+creating a new `domains/<name>/notes/` folder.
+
+`clippers` holds content-clipping learnings; tag each note with its campaign
+(e.g. `yahoo`, `solana`, `touchgrass`) rather than making per-campaign folders.
+See `domains/clippers/README.md`.
 
 ## Procedure
 1. **Read** the raw item fully. Identify the ONE reusable lesson (a pattern, fix,
