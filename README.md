@@ -1,4 +1,5 @@
 #  SecondBrain
+<img width="1448" height="1086" alt="image" src="https://github.com/user-attachments/assets/61e77098-42d9-43cc-8f03-3eb335066d8d" />
 
 A personal, domain-organized knowledge repo that **learns from my sessions and
 tweets** and lets me recall it later by *meaning* — not just keyword search.
