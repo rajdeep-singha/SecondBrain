@@ -19,3 +19,6 @@ dist/
 .DS_Store
 
 sessions/inbox
+
+# Personal runbook (not published)
+commands.md
