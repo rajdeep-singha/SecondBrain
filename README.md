@@ -20,7 +20,9 @@ raw session / tweet  ──drop──▶  inbox/  ──distill──▶  domain
 ```
 
 Mature domains eventually get distilled into reusable **Claude Code skills**
-under `skills/`.
+under `skills/` — browsable and installable via
+[skills.sh](https://www.skills.sh/rajdeep-singha/SecondBrain) (see
+[Skills](#skills)).
 
 ## Layout
 
@@ -31,13 +33,38 @@ under `skills/`.
 | `tweets/` | Distilled tweet/thread notes (`inbox/` for raw drops) |
 | `sessions/inbox/` | Raw session exports waiting to be distilled |
 | `skills/` | Authored/generated Claude Code skills (`SKILL.md`) |
+| `skills.sh.json` | skills.sh grouping manifest (drives the browse/install listing) |
+| `SKILLS.md` | Generated skill catalog |
 | `scripts/` | The pipeline: `build_index.py`, `embed.py`, `search.py`, `common.py` |
 | `.brain/` | Generated vector DB + state (gitignored) |
 | `INDEX.md` | Generated human-readable catalog |
 
 Domains: `aptos`, `ethereum`, `stellar-soroban`, `ai-agents`, `databases`,
-`general` (cross-cutting TypeScript / React / Node / SQL). Add a new one by
-creating `domains/<name>/notes/`.
+`clippers` (content-clipping learnings; campaigns like `yahoo`/`solana`/
+`touchgrass` tracked as tags), `general` (cross-cutting TypeScript / React /
+Node / SQL). Add a new one by creating `domains/<name>/notes/`.
+
+## Skills
+
+The whole collection is browsable + installable via
+[skills.sh](https://www.skills.sh) using the single-repo model (like
+`Sarthib7/agentsmith`) — all skills live in `skills/`, one repo, one manifest.
+
+| Skill | What it does |
+|-------|--------------|
+| `distill-session` | File a raw session/tweet as an atomic, tagged note — redacts secrets, treats raw input as untrusted (no prompt-injection follow-through) |
+| `make-clips` | Cut ranked, post-ready short-form clips from a show/podcast transcript |
+| `aptos-move` | Apply accumulated Aptos Move lessons — transfers, NAV staleness guards, off-chain keeper design |
+| `soroban` | Apply accumulated Stellar Soroban lessons — storage/TTL, vault shares, deriving accounting from balances, safe upgrades |
+
+The playbook skills (`aptos-move`, `soroban`, `make-clips`) read their domain's
+`notes/` folder as a **living source**, so each newly distilled session makes the
+skill richer without editing the `SKILL.md`.
+
+```bash
+npx skills add rajdeep-singha/SecondBrain              # pick from all skills
+npx skills add rajdeep-singha/SecondBrain@soroban      # one skill (add -g for global)
+```
 
 ## Note format (the contract)
 
@@ -142,6 +169,5 @@ Notes on the flow:
 - **Local & key-free**: embeddings via `fastembed` (small ONNX model, CPU, no
   torch, no API keys) stored in `sqlite-vec` (a single-file embedded vector DB).
   Anthropic has no embeddings API, so local is both simplest and cheapest here.
-- **`build_index.py` is stdlib-only** (`json`/`os`/`re`) — modeled on
 
 - **Incremental**: re-embedding only touches changed notes (tracked by content hash).
